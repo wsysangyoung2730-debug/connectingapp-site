@@ -40,27 +40,21 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory public
 
 공식 참고 자료: [Firebase 개인정보 안내](https://firebase.google.com/support/privacy), [Firebase 데이터 처리 약관](https://firebase.google.com/terms/data-processing-terms), [Apple 개인정보 보호](https://www.apple.com/kr/legal/privacy/).
 
-## 공개 전에 확인할 운영 사항
+## 배포와 운영
 
-이 저장소는 웹사이트 구현과 방침 초안입니다. 다음 운영 결정을 확정한 뒤 문구와 작성일을 최종 반영해 주세요.
+- 개인정보처리방침: https://connectingapp-site.vercel.app/
+- 지원 URL: https://connectingapp-site.vercel.app/#contact
+- 최초 공개: 2026년 10월 23일, Vercel `WCIF_CultureKeeper / connectingapp-site`
+- 로그인 없는 요청에서 HTTP 200과 배포 본문이 원본과 일치하는 것을 확인했습니다.
+- 운영자가 승인한 기준: 계정 삭제 7일 이내, 문의 이력 처리 완료 후 30일 뒤 삭제, 유해 콘텐츠 신고 24시간 이내 확인.
 
-- 삭제 요청 시 본인 확인 방법, Firestore 프로필·대화·차단 데이터와 Firebase Auth 삭제 범위, 상대방 메시지 처리, 처리 기한을 확정하고 실제로 검증합니다. 이메일 연락처를 안내한 것만으로 삭제 처리가 자동화되지는 않습니다.
-- 문의 이력의 구체적 보관 기간, 법령상 별도 보존 대상 여부, 국외 처리 고지·동의의 적용 근거 및 아동 이용 정책을 확정합니다.
-- Vercel 배포 시 호스팅 업체의 접속 로그 처리·국외 처리 정보를 본문에 반영하고 실제 공개일을 명시합니다.
-- 계정 생성 앱은 [Apple 심사 지침 5.1.1(v)](https://developer.apple.com/app-store/review/guidelines/#data-collection-and-storage)에 맞는 앱 내 계정 삭제도 준비해야 합니다. 본 사이트는 이 앱 기능을 구현하거나 실제 두 계정 채팅을 검증하지 않습니다.
+Vercel의 현재 GitHub 연동 범위에는 이 저장소가 포함되어 있지 않아 정적 파일을 직접 업로드했습니다. 자동 Git 배포는 아직 연결되지 않았습니다. 후속 변경은 `public/` 파일과 `outputDirectory` 항목을 제외한 `vercel.json`을 한 폴더로 준비해 같은 프로젝트에 배포해야 합니다. 저장소 전체에는 환경 변수와 자격 증명을 넣지 않습니다.
 
-## Vercel 배포 준비
+Git 연동을 설정할 경우 Framework는 **Other**, 빌드 명령은 비움, Output Directory는 **public**, Production Branch는 **main**입니다. 환경 변수는 필요 없습니다. 기능 PR은 `develop`으로 통합하고 출시할 내용을 `main`에 반영합니다.
 
-**이번 작업에서는 배포하지 않습니다.** 나중에 Vercel에서 이 GitHub 저장소를 Import하면 됩니다.
+## 앱 출시 확인 사항
 
-1. Framework Preset: **Other**
-2. Root Directory: 저장소 루트
-3. Build Command: 비워 둡니다.
-4. Output Directory: **public** (`vercel.json`에도 지정)
-5. 환경 변수: 필요 없음
-6. Production Branch: **main**. 기능 PR을 `develop`으로 검토·통합하고 출시할 내용을 `main`에 반영한 뒤 배포합니다.
-
-배포 후 `/`에서 로그인 없이 방침 전문이 표시되는지 확인하고, 확정된 HTTPS 주소를 App Store Connect와 앱의 개인정보처리방침 링크에 연결합니다. 배포 주소가 아직 없으므로 canonical URL이나 임의의 운영 URL은 넣지 않았습니다.
+앱 내 계정 삭제와 신고 접수, Apple 인증 철회, 운영자의 삭제 처리 절차를 구현·검증해야 합니다. 공개 연락처와 처리 기한이 삭제 자동화를 의미하지 않습니다. 실제 Apple 로그인과 두 계정 대화는 별도로 실기기에서 검증해야 합니다. 사이트 공개를 앱 심사 통과 또는 실계정 테스트 완료로 표시하지 않습니다.
 
 ## Git 작업 규칙
 
