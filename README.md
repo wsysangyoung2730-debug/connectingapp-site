@@ -29,16 +29,19 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory public
 
 ## 개인정보 내용의 기준
 
-2026년 10월 23일 확인한 앱 `feat/#18-appleFirebaseChat`의 동작과 Firebase 설정을 기준으로 작성했습니다.
+2026년 10월 23일 확인한 앱 `feat/#18-appleFirebaseChat`의 동작과 Firebase 설정을 기준으로 작성했으며, 2026년 10월 26일 이메일 가입·로그인과 비밀번호 재설정 추가에 맞춰 문서 버전 1.1을 준비했습니다.
 
 - 개인 일기·초안·선택한 사진은 기기에 보관합니다. 사진의 서버 업로드 기능은 없습니다.
 - Apple 로그인은 이름·이메일 범위를 요청하지 않습니다.
+- 이메일 가입·로그인은 이메일 주소를 아이디로 사용하며, 이메일과 비밀번호를 Firebase Authentication으로 전달합니다. 앱의 기기 저장소나 Firestore에 비밀번호를 저장하지 않으며 운영자가 원문을 조회하지 않습니다. 비밀번호 재설정 요청에는 이메일 주소를 사용합니다.
 - 공개 프로필의 닉네임·관심사와 실제 대화, 읽음·보관·차단 상태는 Firebase를 이용합니다.
 - Firestore 데이터베이스는 서울 `asia-northeast3`입니다. Firebase Authentication 데이터는 미국에서 처리됩니다.
 - 계정 삭제 버튼은 현재 앱에 없습니다. 앱 삭제·로그아웃·대화 보관을 서버 삭제라고 안내하지 않습니다.
 - 운영자/개인정보 담당자: **우상영**, **sangyoung2730@naver.com**
 
 공식 참고 자료: [Firebase 개인정보 안내](https://firebase.google.com/support/privacy), [Firebase 데이터 처리 약관](https://firebase.google.com/terms/data-processing-terms), [Apple 개인정보 보호](https://www.apple.com/kr/legal/privacy/).
+
+버전 1.1은 2026년 10월 26일 기존 Vercel 프로젝트에 배포했습니다. 공개 URL에서 이메일 인증 안내·버전·날짜를 확인했습니다. 이메일 인증 단위 테스트 8개와 실제 Firebase의 두 이메일 계정 인증·실시간 메시지 왕복을 확인했습니다. 비밀번호는 Firebase 인증으로만 전달하며 공개 프로필이나 대화 저장 필드에 넣지 않습니다. 재설정 메일의 수신함 도착 및 실제 비밀번호 변경은 별도 확인이 필요합니다.
 
 ## 배포와 운영
 
